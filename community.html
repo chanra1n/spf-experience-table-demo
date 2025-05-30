@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Community Partner Experience Table</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h2>Community Partner Experience Table</h2>
+    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for experience type...">
+
+    <table id="experienceTable">
+        <thead>
+            <tr>
+                <th>Experience</th>
+                <th>Required for a program</th>
+                <th>Students can earn course credit</th>
+                <th>Involves intentional student mentoring / reflection</th>
+                <th>University covers liability</th>
+                <th>Requires formal agreement between uni and external partner</th>
+                <th>Faculty/staff help to arrange experience</th>
+                <th>Experience takes place off-campus for the student</th>
+                <th>Student is paid to participate</th>
+                <th>Time of offering</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Academic Internship</td>
+                <td class="maybe">Maybe</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes, via CCBL</td>
+                <td class="maybe">Maybe</td>
+                <td class="maybe">Maybe</td>
+                <td>Academic Year / Summer</td>
+            </tr>
+            <tr>
+                <td>Service Learning</td>
+                <td class="maybe">Maybe</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="no">No</td>
+                <td class="yes">Yes, via Y.E.S.</td>
+                <td class="maybe">Maybe</td>
+                <td class="no">No</td>
+                <td>Academic Year / Summer</td>
+            </tr>
+            <tr>
+                <td>Clinical Placement</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes, via CCBL</td>
+                <td class="yes">Yes</td>
+                <td class="no">No</td>
+                <td>Academic Year</td>
+            </tr>
+            <tr>
+                <td>Practicum</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes, via CCBL</td>
+                <td class="yes">Yes</td>
+                <td class="no">No</td>
+                <td>Academic Year</td>
+            </tr>
+            <tr>
+                <td>Research Internship</td>
+                <td class="no">No</td>
+                <td class="maybe">Maybe</td>
+                <td class="no">No</td>
+                <td class="maybe">Maybe</td>
+                <td class="no">No</td>
+                <td class="maybe">Maybe, via SPF</td>
+                <td class="maybe">Maybe</td>
+                <td class="yes">Yes</td>
+                <td>Academic Year / Summer</td>
+            </tr>
+            <tr>
+                <td>Paid Academic Year Internship</td>
+                <td class="no">No</td>
+                <td class="maybe">Maybe</td>
+                <td class="no">No</td>
+                <td class="maybe">Maybe</td>
+                <td class="no">No</td>
+                <td class="yes">Yes, via CDC</td>
+                <td class="maybe">Maybe</td>
+                <td class="yes">Yes</td>
+                <td>Academic Year</td>
+            </tr>
+            <tr>
+                <td>Paid Summer Internship</td>
+                <td class="no">No</td>
+                <td class="maybe">Maybe</td>
+                <td class="no">No</td>
+                <td class="maybe">Maybe</td>
+                <td class="no">No</td>
+                <td class="yes">Yes, via CDC</td>
+                <td class="maybe">Maybe</td>
+                <td class="yes">Yes</td>
+                <td>Summer</td>
+            </tr>
+            <tr>
+                <td>Job Shadowing</td>
+                <td class="no">No</td>
+                <td class="no">No</td>
+                <td class="no">No</td>
+                <td class="no">No</td>
+                <td class="maybe">Maybe</td>
+                <td class="maybe">Maybe</td>
+                <td class="maybe">Maybe</td>
+                <td class="no">No</td>
+                <td>Academic Year / Summer</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src = "search.js"></script>
+
+</body>
+
+</html>
