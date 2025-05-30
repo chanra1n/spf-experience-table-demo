@@ -1,58 +1,49 @@
 function searchTable() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
-    const rows = document.querySelectorAll("#experienceTable tbody tr");
-    const headers = document.querySelectorAll("#experienceTable thead th");
-    const headerTexts = Array.from(headers).map(header => header.textContent.toLowerCase());
+    const input = document.getElementById("searchInput").value.toLowerCase().trim();
+    const table = document.getElementById("experienceTable");
+    const rows = table.querySelectorAll("tbody tr");
+
+    if (!input) {
+        rows.forEach(row => row.style.display = "");
+        return;
+    }
+
+    // Split input into words
+    const terms = input.split(/\s+/).filter(Boolean);
 
     rows.forEach(row => {
-        let found = false;
-        const experienceName = row.cells[0].textContent.toLowerCase();
-        
-        // First priority: direct match in experience name
-        if (experienceName.includes(input)) {
-            found = true;
-        } 
-        // Check for column-specific searches (e.g., "paid:yes")
-        else if (input.includes(":")) {
-            const [column, value] = input.split(":");
-            const columnIndex = headerTexts.findIndex(header => header.includes(column.trim()));
-            
-            if (columnIndex !== -1) {
-                const cellValue = row.cells[columnIndex].textContent.toLowerCase();
-                if (cellValue.includes(value.trim())) {
-                    found = true;
-                }
-            }
-        } 
-        // Check for concept matches (e.g., searching "paid" should show all paid positions)
-        else {
-            for (let i = 0; i < headerTexts.length; i++) {
-                if (headerTexts[i].includes(input)) {
-                    // If user searches for a column name, show rows where that column is "Yes"
-                    const cellValue = row.cells[i].textContent.toLowerCase();
-                    if (cellValue.includes("yes")) {
-                        found = true;
-                        break;
-                    }
-                }
-            }
-            
-            // If no concept match, check all cells
-            if (!found) {
-                for (let i = 0; i < row.cells.length; i++) {
-                    const cellValue = row.cells[i].textContent.toLowerCase();
-                    if (cellValue.includes(input)) {
-                        found = true;
-                        break;
-                    }
-                }
-            }
+        // Combine all cell text in the row into one string
+        // Only include cells that exist (skip empty rows)
+        if (!row.cells || row.cells.length === 0) {
+            row.style.display = "none";
+            return;
         }
-        
-        row.style.display = found ? "" : "none";
+        const rowText = Array.from(row.cells).map(cell => cell.textContent.toLowerCase()).join(" ");
+        // Show row only if ALL terms are found somewhere in the row
+        const show = terms.every(term => rowText.includes(term));
+        row.style.display = show ? "" : "none";
     });
 }
 
-// Update the input placeholder to give users search hints
-document.getElementById("searchInput").placeholder = 
-    "Search for experiences or type keywords like 'paid', 'summer', or 'credit'";
+document.addEventListener('DOMContentLoaded', function () {
+    const infoPopup = document.getElementById('infoPopup');
+    document.querySelectorAll('.info-cell').forEach(cell => {
+        cell.addEventListener('mouseenter', function (e) {
+            // Only show popup if data-info exists
+            const info = cell.getAttribute('data-info');
+            if (info) {
+                infoPopup.textContent = info;
+                infoPopup.style.display = 'block';
+            }
+        });
+        cell.addEventListener('mousemove', function (e) {
+            infoPopup.style.left = (e.pageX + 15) + 'px';
+            infoPopup.style.top = (e.pageY + 10) + 'px';
+        });
+        cell.addEventListener('mouseleave', function () {
+            infoPopup.style.display = 'none';
+        });
+    });
+    document.getElementById("searchInput").placeholder =
+        "Search for experience type...";
+});
