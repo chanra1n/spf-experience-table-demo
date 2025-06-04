@@ -13,7 +13,8 @@
             padding: 20px;
             background: var(--humboldt-cream);
             font-size: 15px;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         h2 {
