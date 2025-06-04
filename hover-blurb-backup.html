@@ -1,0 +1,107 @@
+<h2>
+    Opportunity awaits
+</h2>
+<p>
+    The following campus offices offer various experiential learning opportunities: <strong class="tooltip2" data-tooltip="Internship opportunities that are connected to a course; students get connected with projects with the help of faculty and receive course credit. Typically not paid - exceptions exist. The Center for Community Based Learning facilitates academic internships.">academic internships</strong>, <strong class="tooltip2" data-tooltip="Internships offered by companies during the academic year or during the summer. Students are hired by the company directly (not via Cal Poly Humboldt). Opportunities may be local or out of the area. Opportunities are typically advertised by the Career Development Center. Opportunities are also available through the Library and some departments.">paid internships</strong>, <strong class="tooltip2" data-tooltip="Opportunities offered by faculty members at Cal Poly Humboldt, or other universities, research labs and government agencies to generate new knowledge. Experience is usually paid - especially the off-campus opportunities. Experience can be advertised through the Sponsored Programs Foundation, departmental websites and newsletters, faculty advisors.">research</strong>, <strong class="tooltip2" data-tooltip="Opportunities offered by faculty members at Cal Poly Humboldt, or other universities, centers and institutes to engage in scholarly and creative activities. Experience is usually paid - especially the off-campus opportunities. Experience can be advertised through the Sponsored Programs Foundation, departmental websites and newsletters, faculty advisors.">fellowships</strong>, <strong class="tooltip2" data-tooltip="A particular type of academic internship course whose focus is to provide a service to an organization external to campus. The Center for Community Based Learning facilitates service learning courses.">service learning</strong>, <strong class="tooltip2" data-tooltip="A particular type of academic internship course in which students are placed in a clinical setting to gain professional experience. Common for XXX (social work?) majors. The Center for Community Based Learning facilitates clinical placements.">clinical and teachers' site placements</strong>. Each opportunity varies in structure, duration, whether it’s <strong class="tooltip2" data-tooltip="Internships offered by companies during the academic year or during the summer. Students are hired by the company directly (not via Cal Poly Humboldt). Opportunities may be local or out of the area. Opportunities are typically advertised by the Career Development Center. Opportunities are also available through the Library and some departments.">paid</strong>, <strong class="tooltip2" data-tooltip="Opportunities offered by faculty members at Cal Poly Humboldt, or other universities, research labs and government agencies to generate new knowledge. Experience is usually paid - especially the off-campus opportunities. Experience can be advertised through the Sponsored Programs Foundation, departmental websites and newsletters, faculty advisors.">off-campus</strong>, offered during the academic year… and more.
+</p>
+<style>
+    .tooltip2 {
+        position: relative;
+        cursor: pointer!important;
+        transition: color 0.2s;
+        font-family: inherit;
+        color: inherit;
+    }
+    .tooltip2:hover {
+        color: #0078d4;
+    }
+    .tooltip2[data-tooltip]:hover::after {
+        content: attr(data-tooltip);
+        position: fixed;
+        left: 50%;
+        bottom: auto;
+        top: auto;
+        transform: translateX(-50%);
+        background: #222;
+        color: #fff;
+        padding: 16px;
+        border-radius: 10px;
+        white-space: pre-line;
+        font-size: 0.95em;
+        z-index: 9999;
+        pointer-events: none;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        max-width: 90vw;
+        min-width: 200px;
+        width: max-content;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        left: 50vw;
+        top: calc(100% + 8px);
+    }
+    .tooltip2[data-tooltip]::after {
+        content: '';
+        transition: opacity 0.2s;
+        pointer-events: none;
+        background-color: #00856a !important;
+    }
+    @media (max-width: 400px) {
+        .tooltip2[data-tooltip]:hover::after {
+            max-width: 95vw;
+            min-width: 0;
+            left: 50vw;
+            transform: translateX(-50%);
+        }
+    }
+</style><script>
+    // Ensure tooltips stay within viewport horizontally
+    document.querySelectorAll('.tooltip2').forEach(function(el) {
+        el.addEventListener('mousemove', function(e) {
+            const tooltip = el;
+            const tooltipText = tooltip.getAttribute('data-tooltip');
+            let tooltipDiv = document.getElementById('dynamic-tooltip');
+            if (!tooltipDiv) {
+                tooltipDiv = document.createElement('div');
+                tooltipDiv.id = 'dynamic-tooltip';
+                tooltipDiv.style.position = 'fixed';
+                tooltipDiv.style.pointerEvents = 'none';
+                tooltipDiv.style.zIndex = 9999;
+                tooltipDiv.style.background = '#00856a';
+                tooltipDiv.style.color = '#fff';
+                tooltipDiv.style.padding = '16px';
+                tooltipDiv.style.borderRadius = '10px';
+                tooltipDiv.style.whiteSpace = 'pre-line';
+                tooltipDiv.style.fontSize = '0.95em';
+                tooltipDiv.style.fontWeight = '600';
+                tooltipDiv.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                tooltipDiv.style.maxWidth = '350px';
+                tooltipDiv.style.minWidth = '200px';
+                tooltipDiv.style.wordBreak = 'break-word';
+                tooltipDiv.style.overflowWrap = 'break-word';
+                document.body.appendChild(tooltipDiv);
+            }
+            tooltipDiv.textContent = tooltipText;
+            tooltipDiv.style.display = 'block';
+            // Position tooltip
+            let x = e.clientX;
+            let y = e.clientY + 24;
+            // Prevent overflow right
+            if (x + tooltipDiv.offsetWidth > window.innerWidth - 8) {
+                x = window.innerWidth - tooltipDiv.offsetWidth - 8;
+            }
+            // Prevent overflow left
+            if (x < 8) x = 8;
+            // Prevent overflow bottom
+            if (y + tooltipDiv.offsetHeight > window.innerHeight - 8) {
+                y = e.clientY - tooltipDiv.offsetHeight - 8;
+            }
+            tooltipDiv.style.left = x + 'px';
+            tooltipDiv.style.top = y + 'px';
+        });
+        el.addEventListener('mouseleave', function() {
+            let tooltipDiv = document.getElementById('dynamic-tooltip');
+            if (tooltipDiv) tooltipDiv.style.display = 'none';
+        });
+    });
+</script>
